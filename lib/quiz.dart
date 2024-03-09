@@ -36,9 +36,19 @@ class _QuizState extends State<Quiz> {
       setState(() {
         activeScreen = ResultsScreen(
           chosenAnswer: selectedAnswers,
+          onRestart: restartQuiz,
         );
       });
     }
+  }
+
+  void restartQuiz() {
+    setState(() {
+      selectedAnswers = [];
+      activeScreen = QuestionsScreen(
+        onSelectAnswer: chooseAnswer,
+      );
+    });
   }
 
   @override
